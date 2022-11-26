@@ -1,0 +1,15 @@
+{
+    "register":[
+        {
+            "FullName" :"Harsh Davda",
+            "Email":"harshdavda99@gmail.com",
+            "Password":"123456789"
+        },
+        {
+            "FullName" :"Kenil Patel",
+            "Email":"Kenil99@gmail.com",
+            "Password":"123456789"
+        }
+
+    ]
+}
