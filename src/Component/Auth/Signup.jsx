@@ -1,7 +1,7 @@
 
 
 import React, { useState } from "react";
-// import { useSelector } from "react-redux"
+import { toast } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom'
 /* eslint-disable jsx-a11y/img-redundant-alt */
 const Signup = () => {
@@ -24,10 +24,11 @@ const Signup = () => {
         if (reg.length > 0) {
             let newlist = reg.filter((list) => list?.Email === login?.Email)
             if (newlist.length > 0) {
-                alert('Email already registered')
+                toast('Email already registered');
             } else {
                 reg.push(login);
                 localStorage.setItem('userRegister', JSON.stringify(reg));
+                toast('Registration completed');
                 setlogindetails('');
                 history('/login');
 
@@ -37,6 +38,7 @@ const Signup = () => {
             reg.push(login);
             localStorage.setItem('userRegister', JSON.stringify(reg));
             setlogindetails('');
+            toast('Registration completed');
             history('/login');
         }
     }

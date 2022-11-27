@@ -1,17 +1,23 @@
 
 
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import {useSelector} from "react-redux"
 import {useNavigate, Link} from 'react-router-dom'
+import { toast } from 'react-toastify';
 /* eslint-disable jsx-a11y/img-redundant-alt */
 const Login = () => {
+    // const details = useSelector(state => state.Database.register)
+    const [details,  setdetails]= useState(useSelector(state => state.Database.register) || [])
     const history = useNavigate();
-    const details = useSelector(state => state.Database.register)
     const [login, setlogindetails]= useState({
         Email:"",
         Password:""
     });
-
+    
+    useEffect(() => {
+        // console.log('helloe')
+        setdetails(JSON.parse(localStorage.getItem('userRegister')) || []);
+    },[]);
 
 const handlechange = (e) => {
     let { name, value } = e.target;
@@ -22,8 +28,9 @@ const checkEmail = () =>{
     let emailExists = details.filter((loged) =>  loged?.Email === login.Email);
     if (emailExists.length > 0) {
         if(emailExists[0]?.Password === login?.Password){
-            alert('Logged in');
-            history('/listpage')
+            // alert('Logged in');
+            history('/listpage');
+            toast("Logged in");
 
         }else {
             alert('Enter Correct Password')

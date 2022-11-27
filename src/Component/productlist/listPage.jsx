@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
 export default function ListPage() {
 
     const [list, setlist] = useState();
@@ -25,11 +26,12 @@ export default function ListPage() {
             let list = cartdata?.filter(cartlist => cartlist === data?.id);
             if(list.length === 0){
                 selected_data?.push(data.id);
+                toast(`${data?.title} added to the cart`);
                 localStorage.setItem('Cartlist',JSON.stringify(selected_data));
                 setCartData(selected_data);
             }else {
                 console.log('data', data)
-                alert(`${data?.title} Already added to the cart`);
+                toast(`${data?.title} Already added to the cart`);
             }
         }
     }
@@ -39,11 +41,12 @@ export default function ListPage() {
             let list = wishdata?.filter(cartlist => cartlist === data?.id);
             if(list.length === 0){
                 selected_data?.push(data.id);
+                toast(`${data?.title} added to the wishlist`);
                 localStorage.setItem('Wishlist',JSON.stringify(selected_data));
                 setWishData(selected_data);
             }else {
                 console.log('data', data)
-                alert(`${data?.title} Already added to the wishlist`);
+                toast(`${data?.title} Already added to the wishlist`);
             }
         }
     }
