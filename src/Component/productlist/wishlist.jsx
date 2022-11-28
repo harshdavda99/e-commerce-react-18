@@ -6,11 +6,11 @@ export default function WishlisttPage() {
     const [wishdata, setWishData]= useState(JSON.parse(localStorage.getItem('Wishlist')) || []);
     useEffect(() => {
         axios.get('https://dummyjson.com/products').then((res) => {
-            if (wishdata?.length > 0 && res?.data?.products){
-                let list = wishdata?.map((list) => {
+            if (wishdata?.length >= 0 && res?.data?.products){
+                let listss = wishdata?.map((list) => {
                     return  res?.data?.products?.filter((cartlist) =>cartlist?.id === list)
                 });
-                setlist(list)
+                setlist(listss)
             }
 
         }).catch((err) => {

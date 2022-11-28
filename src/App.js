@@ -6,19 +6,16 @@ import Signup from './Component/Auth/Signup.jsx'
 import ListPage from './Component/productlist/listPage.jsx'
 import WishlisttPage from './Component/productlist/wishlist'
 import CartPage from './Component/productlist/cart.jsx'
-import Navbar from './Component/navbar'
+import  NavBar from './Component/navbar'
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
-
 
 
 function App() {
   return (
     <div className="App">
       <ToastContainer/>
-      <Navbar />
+      <NavBar/>
       <Routes>
         <Route path={"/"} element={<Login />}></Route>
         <Route path={"/login"} element={<Login />}></Route>

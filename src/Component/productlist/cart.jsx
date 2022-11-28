@@ -7,11 +7,11 @@ export default function CartPage() {
 
     useEffect(() => {
         axios.get('https://dummyjson.com/products').then((res) => {
-            if (cartdata?.length > 0 && res?.data?.products){
-                let list = cartdata?.map((list) => {
-                    return  res?.data?.products?.filter((cartlist) =>cartlist?.id === list)
+            if (cartdata?.length >= 0  && res?.data?.products){
+                let listss = cartdata?.map((lists) => {
+                    return  res?.data?.products?.filter((cartlist) =>cartlist?.id === lists)
                 });
-                setlist(list)
+                setlist(listss)
             }
 
         }).catch((err) => {
